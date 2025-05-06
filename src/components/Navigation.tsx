@@ -1,22 +1,23 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-const StyledLink = styled(Link)`
+const StyledNavLink = styled(NavLink)`
     color: currentColor;
     display: inline-block;
     padding: 15px;
     text-decoration: none;
 
-    &:hover {
+    &.active {
         background: #fff2;
+        pointer-events: none;
     }
 `
 
 export default function Navigation() {
     return (
         <nav>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/favorites">Favorites</StyledLink>
+            <StyledNavLink to="/">Home</StyledNavLink>
+            <StyledNavLink to="/favorites">Favorites</StyledNavLink>
         </nav>
     )
 }
