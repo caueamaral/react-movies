@@ -4,17 +4,18 @@ import Home from './pages/Home'
 import Favorites from './pages/Favorites'
 import NotFound from './pages/NotFound'
 import './css/reset.css'
+import './css/app.css'
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
       </BrowserRouter>
     </>
   )
