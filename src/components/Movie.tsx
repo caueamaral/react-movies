@@ -17,7 +17,7 @@ export default function Card({ movie }: { movie: MovieProps }) {
     return (
         <StyledSection>
             <figure>
-                <StyledImg src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/2hTPkBiXoMmrdtYgHtB9WU5dg80.jpg" alt="Hunger Games" />
+                <StyledImg src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt={movie.title} />
                 <StyledFigcaption>{movie.title}</StyledFigcaption>
             </figure>
         </StyledSection>
