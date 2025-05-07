@@ -7,8 +7,9 @@ const StyledHeader = styled.header`
     background-color: #444;
     color: #fff;
     display: flex;
+    height: var(--headerHeight);
     justify-content: space-between;
-    padding: 20px 30px;
+    padding-inline: 30px;
 `
 
 export default function Header() {

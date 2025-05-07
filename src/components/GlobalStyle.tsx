@@ -1,13 +1,26 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Rubik', sans-serif;
-  }
+    :root {
+        --headerHeight: 80px;
+        --mainPadding: 30px;
+    }
 
-  main {
-      padding: 30px;
-      margin-inline: auto;
-      max-width: 1500px;
+    html,
+    body,
+    #root {
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Rubik', sans-serif;
+        min-height: 100%;
+    }
+
+    main {
+        padding: var(--mainPadding);
+        margin-inline: auto;
+        max-width: 1500px;
+        min-height: calc(100vh - var(--headerHeight) - (var(--mainPadding) * 2));
     }
 `
