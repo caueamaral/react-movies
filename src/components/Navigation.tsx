@@ -1,14 +1,19 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
+const StyledUl = styled.ul`
+    display: flex;
+    gap: 20px;
+`
+
 const StyledNavLink = styled(NavLink)`
     color: currentColor;
-    display: inline-block;
-    padding: 15px;
+    display: block;
+    padding-block: 10px;
     text-decoration: none;
 
     &.active {
-        background: #fff2;
+        border-bottom: 1px solid;
         pointer-events: none;
     }
 `
@@ -16,8 +21,14 @@ const StyledNavLink = styled(NavLink)`
 export default function Navigation() {
     return (
         <nav>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+            <StyledUl>
+                <li>
+                    <StyledNavLink to="/">Home</StyledNavLink>
+                </li>
+                <li>
+                    <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+                </li>
+            </StyledUl>
         </nav>
     )
 }
