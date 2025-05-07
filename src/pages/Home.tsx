@@ -1,10 +1,10 @@
-import Cards from '../components/Cards'
+import Movies from '../components/Movies'
 
 export default function Home() {
     return (
         <>
             <main>
-                <Cards />
+                <Movies />
             </main>
         </>
     )
