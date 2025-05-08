@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { SearchContext } from '../App'
 import styled from 'styled-components'
 
 export default function Search() {
@@ -38,9 +40,16 @@ export default function Search() {
         padding-inline: 10px;
     `
 
+    const { search, setSearch } = useContext(SearchContext)
+
     return (
         <StyledForm>
-            <StyledInput type="text" placeholder="Search for movies..." />
+            <StyledInput
+                type="text"
+                placeholder="Search for movies..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
             <StyledButton>
                 <svg xmlns="http://www.w3.org/2000/svg" height="22px" version="1.1" viewBox="0 0 48 48" width="22px">
                     <g fill="none" fillRule="evenodd" id="Page-1" stroke="none" strokeWidth="1">
