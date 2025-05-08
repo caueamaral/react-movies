@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Logo from './Logo'
+import Search from './Search'
 import Navigation from './Navigation'
 
 const StyledHeader = styled.header`
@@ -12,11 +13,20 @@ const StyledHeader = styled.header`
     padding-inline: 30px;
 `
 
+const StyledSection = styled.section`
+    align-items: center;
+    display: flex;
+    gap: 50px;
+`
+
 export default function Header() {
     return (
         <StyledHeader>
             <Logo />
-            <Navigation />
+            <StyledSection>
+                <Search />
+                <Navigation />
+            </StyledSection>
         </StyledHeader>
     )
 }
