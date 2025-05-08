@@ -2,7 +2,8 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --headerHeight: 80px;
+        --headerHeightMobile: 75px;
+        --headerHeightDesktop: 80px;
         --mainPadding: 30px;
     }
 

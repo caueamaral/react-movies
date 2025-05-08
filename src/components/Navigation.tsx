@@ -9,7 +9,7 @@ const StyledUl = styled.ul`
 const StyledNavLink = styled(NavLink)`
     color: currentColor;
     display: block;
-    padding-block: 10px;
+    padding-block: 5px;
     text-decoration: none;
 
     &.active {

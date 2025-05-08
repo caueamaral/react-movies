@@ -22,6 +22,10 @@ export default function Search() {
         &:focus {
             outline: none;
         }
+        
+        @media (max-width:799px) {
+            text-align: center;
+        }
     `
 
     const StyledButton = styled.button`
