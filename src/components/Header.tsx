@@ -8,13 +8,18 @@ const StyledHeader = styled.header`
     background-color: #444;
     color: #fff;
     display: flex;
-    justify-content: space-between;
     padding-inline: 30px;
 
     @media (max-width:799px) {
         flex-direction: column;
         padding-block: 30px;
+        height: var(--headerHeightMobile);
         gap: 20px;
+    }
+
+    @media (min-width:800px) {
+        height: var(--headerHeightDesktop);
+        justify-content: space-between;
     }
 `
 
@@ -25,12 +30,10 @@ const StyledSection = styled.section`
     @media (max-width:799px) {
         flex-direction: column;
         gap: 20px;
-        height: var(--headerHeightMobile);
     }
 
     @media (min-width:800px) {
         gap: 50px;
-        height: var(--headerHeightDesktop);
     }
 `
 

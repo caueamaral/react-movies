@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
 const StyledMain = styled.main`
@@ -15,6 +16,16 @@ const StyledH1 = styled.h1`
 `
 
 export default function NotFound() {
+    useEffect(() => {
+        // Disable scroll
+        document.body.style.overflow = 'hidden'
+
+        // Re-enable scroll on unmount
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [])
+
     return (
         <>
             <StyledMain>
