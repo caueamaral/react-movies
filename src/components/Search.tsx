@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { SearchContext } from '../App'
+import MovieApi from '../services/MovieApi'
 import styled from 'styled-components'
 
 const StyledForm = styled.form`
@@ -42,12 +43,30 @@ const StyledButton = styled.button`
 export default function Search() {
     const { search, setSearch } = useContext(SearchContext)
 
+    const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
+
+        const fetchMovie = async () => {
+            try {
+                const response = await MovieApi(e.target.value)
+
+                console.log('response', response.data.results)
+
+                // setMovies(response.data.results)
+            } catch(error) {
+                console.log('Failed to fetch movie: ', error)
+            }
+        }
+
+        fetchMovie()
     }
 
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleForm}>
             <StyledInput
                 type="text"
                 placeholder="Search for movies..."
