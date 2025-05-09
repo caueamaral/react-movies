@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { SearchContext } from '../App'
+import { MoviesContext } from '../App'
 import MovieApi from '../services/MovieApi'
 import styled from 'styled-components'
 
@@ -42,6 +43,7 @@ const StyledButton = styled.button`
 
 export default function Search() {
     const { search, setSearch } = useContext(SearchContext)
+    const { movies, setMovies } = useContext(MoviesContext)
 
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -53,10 +55,7 @@ export default function Search() {
         const fetchMovie = async () => {
             try {
                 const response = await MovieApi(e.target.value)
-
-                console.log('response', response.data.results)
-
-                // setMovies(response.data.results)
+                setMovies(response.data.results)
             } catch(error) {
                 console.log('Failed to fetch movie: ', error)
             }

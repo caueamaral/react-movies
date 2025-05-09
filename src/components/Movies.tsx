@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { MoviesContext } from '../App'
 import type { MovieProps } from '../interfaces/MovieProps'
 import styled from 'styled-components'
 import Movie from './Movie'
@@ -11,7 +12,7 @@ const StyledArticle = styled.article`
 `
 
 export default function Movies() {
-    const [movies, setMovies] = useState<MovieProps[]>([])
+    const { movies, setMovies } = useContext(MoviesContext)
 
     useEffect(() => {
         const fetchMovies = async () => {
