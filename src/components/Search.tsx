@@ -18,7 +18,7 @@ export default function Search() {
         width: 220px;
 
         &::placeholder {
-            color: currentColor;
+            color: #ccc;
         }
 
         &:focus {
