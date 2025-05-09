@@ -42,13 +42,17 @@ const StyledButton = styled.button`
 export default function Search() {
     const { search, setSearch } = useContext(SearchContext)
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value)
+    }
+
     return (
         <StyledForm>
             <StyledInput
                 type="text"
                 placeholder="Search for movies..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleInputChange}
             />
             <StyledButton>
                 <svg xmlns="http://www.w3.org/2000/svg" height="22px" version="1.1" viewBox="0 0 48 48" width="22px">
