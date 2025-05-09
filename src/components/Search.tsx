@@ -2,44 +2,44 @@ import { useContext } from 'react'
 import { SearchContext } from '../App'
 import styled from 'styled-components'
 
+const StyledForm = styled.form`
+    background: #fff2;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+`
+
+const StyledInput = styled.input`
+    background: transparent;
+    border: none;
+    color: currentColor;
+    padding: 10px 13px;
+    width: 220px;
+
+    &::placeholder {
+        color: #ccc;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width:799px) {
+        text-align: center;
+    }
+`
+
+const StyledButton = styled.button`
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    display: flex;
+    padding-inline: 10px;
+`
+
 export default function Search() {
-    const StyledForm = styled.form`
-        background: #fff2;
-        border-radius: 5px;
-        color: #fff;
-        display: flex;
-    `
-
-    const StyledInput = styled.input`
-        background: transparent;
-        border: none;
-        color: currentColor;
-        padding: 10px 13px;
-        width: 220px;
-
-        &::placeholder {
-            color: #ccc;
-        }
-
-        &:focus {
-            outline: none;
-        }
-        
-        @media (max-width:799px) {
-            text-align: center;
-        }
-    `
-
-    const StyledButton = styled.button`
-        align-items: center;
-        background: transparent;
-        border: none;
-        color: currentColor;
-        cursor: pointer;
-        display: flex;
-        padding-inline: 10px;
-    `
-
     const { search, setSearch } = useContext(SearchContext)
 
     return (
