@@ -19,9 +19,9 @@ const StyledSvg = styled.svg`
     fill: none;
     height: 25px;
     position: absolute;
-    top: 15px;
-    stroke: #fff;
     right: 15px;
+    stroke: #fff;
+    top: 15px;
     width: 25px;
 
     &.active{
