@@ -1,6 +1,16 @@
 import styled from 'styled-components'
 import type { MovieProps } from '../interfaces/MovieProps'
 
+const StyledSection = styled.section`
+    &:hover {
+        opacity: .9;
+    }
+
+    &:hover div svg {
+        display: block;
+    }
+`
+
 const StyledDiv = styled.div`
     position: relative;
 `
@@ -16,6 +26,7 @@ const StyledFigcaption = styled.figcaption`
 
 const StyledSvg = styled.svg`
     cursor: pointer;
+    display: none;
     fill: none;
     height: 25px;
     position: absolute;
@@ -32,7 +43,7 @@ const StyledSvg = styled.svg`
 
 export default function Card({ movie }: { movie: MovieProps }) {
     return (
-        <section>
+        <StyledSection className="card">
             <StyledDiv>
                 <figure>
                     <StyledImg src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt={movie.title} />
@@ -42,6 +53,6 @@ export default function Card({ movie }: { movie: MovieProps }) {
                     <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                 </StyledSvg>
             </StyledDiv>
-        </section>
+        </StyledSection>
     )
 }
