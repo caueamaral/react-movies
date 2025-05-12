@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { MoviesContext } from '../App'
-import type { MovieProps } from '../interfaces/MovieProps'
 import styled from 'styled-components'
-import Movie from './Movie'
+import MovieCard from './MovieCard'
 import MoviesApi from '../services/MoviesApi'
 
 const StyledArticle = styled.article`
@@ -31,7 +30,7 @@ export default function Movies() {
         <StyledArticle>
             {
                 movies.map(movie => (
-                    <Movie key={movie.id} movie={movie} />
+                    <MovieCard key={movie.id} movie={movie} />
                 ))
             }
         </StyledArticle>
