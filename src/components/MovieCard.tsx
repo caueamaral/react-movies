@@ -9,8 +9,9 @@ const StyledSection = styled.section`
         visibility: visible;
     }
 
-    &:hover div svg {
-        display: block;
+    &:hover .favorite {
+        opacity: 1;
+        visibility: visible;
     }
 `
 
@@ -29,7 +30,7 @@ const StyledFigcaption = styled.figcaption`
 `
 
 const StyledOverlay = styled.div`
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .3);
     bottom: 0;
     left: 0;
     opacity: 0;
@@ -40,21 +41,28 @@ const StyledOverlay = styled.div`
     visibility: hidden;
 `
 
-const StyledSvg = styled.svg`
+const StyledFavorite = styled.div`
+    background: rgba(0, 0, 0, .7);
+    border-radius: 50%;
     cursor: pointer;
-    display: none;
-    fill: #fff;
-    height: 20px;
+    display: flex;
+    opacity: 0;
+    padding: 10px;
     position: absolute;
-    right: 15px;
-    stroke: #fff;
-    top: 15px;
-    width: 20px;
+    right: 10px;
+    top: 10px;
+    visibility: hidden;
 
-    &.active{
+    &.active svg{
         fill: #d00;
         stroke: #d00;
     }
+`
+
+const StyledSvg = styled.svg`
+    fill: #fff;
+    height: 14px;
+    width: 14px;
 `
 
 export default function Card({ movie }: { movie: MovieProps }) {
@@ -74,14 +82,17 @@ export default function Card({ movie }: { movie: MovieProps }) {
                 <StyledDiv>
                     <StyledImg src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt={movie.title} />
                     <StyledOverlay className="card-overlay" />
-                    <StyledSvg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        className={`${favorite ? 'active' : ''}`}
+                    <StyledFavorite
+                        className={`favorite ${favorite ? 'active' : ''}`}
                         onClick={handleSvgClick}
                     >
-                        <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
-                    </StyledSvg>
+                        <StyledSvg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                        >
+                            <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
+                        </StyledSvg>
+                    </StyledFavorite>
                 </StyledDiv>
                 <StyledFigcaption>{movie.title}</StyledFigcaption>
             </figure>
