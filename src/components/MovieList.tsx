@@ -14,6 +14,8 @@ export default function Movies() {
     const { movies, setMovies } = useContext(MoviesContext)
 
     useEffect(() => {
+        console.log(123)
+
         const fetchMovies = async () => {
             try {
                 const response = await MoviesApi()
