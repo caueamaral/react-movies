@@ -7,7 +7,18 @@ import MoviesApi from '../services/MoviesApi'
 const StyledArticle = styled.article`
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
 `
 
 export default function Favorites() {

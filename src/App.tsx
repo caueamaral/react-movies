@@ -46,6 +46,8 @@ function App() {
   }, [])
 
   useEffect(() => {
+    console.log('favorites', favorites)
+
     sessionStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 

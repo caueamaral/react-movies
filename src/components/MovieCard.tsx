@@ -46,8 +46,6 @@ const StyledSvg = styled.svg`
 export default function Card({ movie }: { movie: MovieProps }) {
     const { favorites, setFavorites, addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
 
-    console.log('movie.id', movie.id)
-
     const favorite = isFavorite(movie.id)
 
     const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
