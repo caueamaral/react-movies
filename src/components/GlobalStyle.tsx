@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        background: #222;
+        color: #fff;
         font-family: 'Rubik', sans-serif;
         min-height: 100%;
     }
