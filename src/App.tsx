@@ -26,10 +26,16 @@ export const MoviesContext = createContext<{
 
 export const FavoritesContext = createContext<{
   favorites: MovieProps[];
-  setFavorites: React.Dispatch<React.SetStateAction<MovieProps[]>>
+  setFavorites: React.Dispatch<React.SetStateAction<MovieProps[]>>;
+  addToFavorites: (movie: MovieProps) => void;
+  removeFromFavorites: (movieId: number) => void;
+  isFavorite: (movieId: number) => boolean;
 }>({
   favorites: [],
-  setFavorites: () => {}
+  setFavorites: () => {},
+  addToFavorites: () => {},
+  removeFromFavorites: () => {},
+  isFavorite: () => false
 })
 
 function App() {
@@ -46,8 +52,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log('favorites', favorites)
-
     sessionStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 
