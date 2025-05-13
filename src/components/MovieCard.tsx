@@ -44,11 +44,11 @@ const StyledSvg = styled.svg`
 `
 
 export default function Card({ movie }: { movie: MovieProps }) {
-    const { favorites, setFavorites, addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
+    const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
 
     const favorite = isFavorite(movie.id)
 
-    const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
+    const handleSvgClick = () => {
 
         if (favorite) removeFromFavorites(movie.id)
         else addToFavorites(movie)
