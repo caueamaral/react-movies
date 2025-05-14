@@ -9,7 +9,9 @@ export default function Movies() {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await MoviesApi()
+                const pageNumber: number = 1
+                const response = await MoviesApi(pageNumber)
+                
                 setMovies(response.data.results)
             } catch(error) {
                 console.error('Faile to fetch movies: ', error)
