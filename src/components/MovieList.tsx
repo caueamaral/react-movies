@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { MoviesContext } from '../App'
 import MovieCard from './MovieCard'
 import MoviesApi from '../services/MoviesApi'
-import MovieNotFound from '../pages/MovieNotFound'
+import MovieNotFound from '../components/MovieNotFound'
 
 export default function Movies() {
     const { movies, setMovies } = useContext(MoviesContext)
