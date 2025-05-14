@@ -47,14 +47,10 @@ export default function Search() {
 
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-    }
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
 
         const fetchMovie = async () => {
             try {
-                const response = await MovieApi(e.target.value)
+                const response = await MovieApi(search)
                 setMovies(response.data.results)
             } catch(error) {
                 console.log('Failed to fetch movie: ', error)
@@ -70,7 +66,7 @@ export default function Search() {
                 type="text"
                 placeholder="Search for movies..."
                 value={search}
-                onChange={handleInputChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
             />
             <StyledButton>
                 <svg xmlns="http://www.w3.org/2000/svg" height="22px" version="1.1" viewBox="0 0 48 48" width="22px">
