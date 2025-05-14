@@ -89,6 +89,10 @@ const StyledHeart = styled.svg`
     width: 14px;
 `
 
+const StyledTitle = styled.div`
+    line-height: 1.2em;
+`
+
 const StyledReleaseYear = styled.div`
     color: #aaa;
     margin-top: 5px;
@@ -135,9 +139,9 @@ export default function Card({ movie }: { movie: MovieProps }) {
                     </StyledFavorite>
                 </StyledDiv>
                 <StyledFigcaption>
-                    <div>
+                    <StyledTitle>
                         {movie.title}
-                    </div>
+                    </StyledTitle>
                     <StyledReleaseYear>
                         {getMovieReleaseYear(movie.release_date)}
                     </StyledReleaseYear>
