@@ -65,6 +65,11 @@ const StyledSvg = styled.svg`
     width: 14px;
 `
 
+const StyledReleaseYear = styled.div`
+    color: #aaa;
+    margin-top: 5px;
+`
+
 export default function Card({ movie }: { movie: MovieProps }) {
     const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
 
@@ -74,6 +79,12 @@ export default function Card({ movie }: { movie: MovieProps }) {
 
         if (favorite) removeFromFavorites(movie.id)
         else addToFavorites(movie)
+    }
+
+    const getMovieReleaseYear = (release_date: string) => {
+        const year = release_date.split('-')[0] || ''
+
+        return year
     }
 
     return (
@@ -94,7 +105,14 @@ export default function Card({ movie }: { movie: MovieProps }) {
                         </StyledSvg>
                     </StyledFavorite>
                 </StyledDiv>
-                <StyledFigcaption>{movie.title}</StyledFigcaption>
+                <StyledFigcaption>
+                    <div>
+                        {movie.title}
+                    </div>
+                    <StyledReleaseYear>
+                        {getMovieReleaseYear(movie.release_date)}
+                    </StyledReleaseYear>
+                </StyledFigcaption>
             </figure>
         </StyledSection>
     )
