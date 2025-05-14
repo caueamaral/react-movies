@@ -23,7 +23,7 @@ const StyledButton = styled.button`
     padding: 10px 12px;
 
     &.active {
-        background: #444;
+        background: #;
         color: #fff;
         pointer-events: none;
     }
@@ -33,6 +33,8 @@ export default function MoviePagination() {
     const { movies, setMovies } = useContext(MoviesContext)
     const [paginationActive, setPaginationActive] = useState<boolean>(false)
     const [currentPage, setCurrentPage] = useState<number>(1)
+
+    if (! movies.length) return
 
     const pages: number[] = [1, 2, 3, 4, 5]
 
