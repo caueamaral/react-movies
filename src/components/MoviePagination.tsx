@@ -1,5 +1,5 @@
+import { useContext, useState } from 'react'
 import { styled } from 'styled-components'
-import { useContext } from 'react'
 import { MoviesContext } from '../App'
 import MoviesApi from '../services/MoviesApi'
 
@@ -11,16 +11,33 @@ const StyledPagination = styled.section`
     margin-top: 40px;
 `
 
+const StyledButtonsContainer = styled.div`
+    display: flex;
+    gap: 5px;
+`
+
 const StyledButton = styled.button`
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 12px;
+
+    &.active {
+        background: #444;
+        color: #fff;
+        pointer-events: none;
+    }
 `
 
 export default function MoviePagination() {
     const { movies, setMovies } = useContext(MoviesContext)
+    const [paginationActive, setPaginationActive] = useState<boolean>(false)
+    const [currentPage, setCurrentPage] = useState<number>(1)
+
+    const pages: number[] = [1, 2, 3, 4, 5]
 
     const handleButtonClick = (page: number) => {
-        console.log(`The button ${page} has been clicked`)
+        setCurrentPage(page)
 
         const fetchMovies = async () => {
             try {
@@ -40,11 +57,20 @@ page
             <div>
                 Pagination
             </div>
-            <div>
-                <StyledButton onClick={() => handleButtonClick(1)}>1</StyledButton>
-                <StyledButton onClick={() => handleButtonClick(2)}>2</StyledButton>
-                <StyledButton onClick={() => handleButtonClick(3)}>3</StyledButton>
-            </div>
+            <StyledButtonsContainer>
+                {
+                    pages.map(page => (
+                        <>
+                            <StyledButton
+                                onClick={() => handleButtonClick(page)}
+                                className={currentPage === page ? 'active' : ''}
+                            >
+                                {page}
+                            </StyledButton>
+                        </>
+                    ))
+                }
+            </StyledButtonsContainer>
         </StyledPagination>
     )
 }
