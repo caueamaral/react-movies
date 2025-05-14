@@ -71,6 +71,11 @@ const StyledReleaseYear = styled.div`
 `
 
 export default function Card({ movie }: { movie: MovieProps }) {
+
+    if (! movie.poster_path) {
+        return
+    }
+
     const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
 
     const favorite = isFavorite(movie.id)
