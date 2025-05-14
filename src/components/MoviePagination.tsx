@@ -23,7 +23,7 @@ const StyledButton = styled.button`
     padding: 10px 12px;
 
     &.active {
-        background: #;
+        background: #333;
         color: #fff;
         pointer-events: none;
     }
@@ -31,7 +31,6 @@ const StyledButton = styled.button`
 
 export default function MoviePagination() {
     const { movies, setMovies } = useContext(MoviesContext)
-    const [paginationActive, setPaginationActive] = useState<boolean>(false)
     const [currentPage, setCurrentPage] = useState<number>(1)
 
     if (! movies.length) return
@@ -61,15 +60,14 @@ page
             </div>
             <StyledButtonsContainer>
                 {
-                    pages.map(page => (
-                        <>
-                            <StyledButton
-                                onClick={() => handleButtonClick(page)}
-                                className={currentPage === page ? 'active' : ''}
-                            >
-                                {page}
-                            </StyledButton>
-                        </>
+                    pages.map((page) => (
+                        <StyledButton
+                            key={page}
+                            className={currentPage === page ? 'active' : ''}
+                            onClick={() => handleButtonClick(page)}
+                        >
+                            {page}
+                        </StyledButton>
                     ))
                 }
             </StyledButtonsContainer>

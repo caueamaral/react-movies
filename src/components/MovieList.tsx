@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { MoviesContext } from '../App'
 import MovieCard from './MovieCard'
 import MoviesApi from '../services/MoviesApi'
+import MovieNotFound from '../pages/MovieNotFound'
 
 export default function Movies() {
     const { movies, setMovies } = useContext(MoviesContext)
@@ -24,9 +25,13 @@ export default function Movies() {
     return (
         <article className="cards">
             {
-                movies.map(movie => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))
+                movies.length ? (
+                    movies.map(movie => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))
+                ) : (
+                    <MovieNotFound />
+                )
             }
         </article>
     )

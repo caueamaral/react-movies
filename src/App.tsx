@@ -5,7 +5,7 @@ import type { MovieProps } from './interfaces/MovieProps'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
-import NotFound from './pages/NotFound'
+import PageNotFound from './pages/PageNotFound'
 import './css/reset.css'
 
 export const SearchContext = createContext<{
@@ -96,7 +96,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/favorites" element={<Favorites />} />
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </BrowserRouter>
           </FavoritesContext.Provider>
