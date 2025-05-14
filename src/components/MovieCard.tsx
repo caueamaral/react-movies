@@ -102,9 +102,7 @@ export default function Card({ movie }: { movie: MovieProps }) {
     const favorite = isFavorite(movie.id)
 
     const handleSvgClick = () => {
-
-        if (favorite) removeFromFavorites(movie.id)
-        else addToFavorites(movie)
+        favorite ? removeFromFavorites(movie.id) : addToFavorites(movie)
     }
 
     const getMovieReleaseYear = (release_date: string) => {
