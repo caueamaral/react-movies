@@ -3,11 +3,9 @@ import MoviePagination from '../components/MoviePagination'
 
 export default function Home() {
     return (
-        <>
-            <main>
-                <MovieList />
-                <MoviePagination />
-            </main>
-        </>
+        <main>
+            <MovieList />
+            <MoviePagination />
+        </main>
     )
 }

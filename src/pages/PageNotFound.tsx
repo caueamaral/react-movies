@@ -27,12 +27,10 @@ export default function NotFound() {
     }, [])
 
     return (
-        <>
-            <StyledMain>
-                <section>
-                    <StyledH1>404 - Page Not Found :-(</StyledH1>
-                </section>
-            </StyledMain>
-        </>
+        <StyledMain>
+            <section>
+                <StyledH1>404 - Page Not Found :-(</StyledH1>
+            </section>
+        </StyledMain>
     )
 }

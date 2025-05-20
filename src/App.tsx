@@ -5,6 +5,7 @@ import type { MovieProps } from './interfaces/MovieProps'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
+import Movie from './pages/Movie'
 import PageNotFound from './pages/PageNotFound'
 import './css/reset.css'
 
@@ -99,6 +100,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/favorites" element={<Favorites />} />
+                  <Route path="/movie" element={<Movie />} />
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </BrowserRouter>

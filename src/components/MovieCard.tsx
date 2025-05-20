@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { FavoritesContext } from '../App'
 import styled, { keyframes } from 'styled-components'
 import type { MovieProps } from '../interfaces/MovieProps'
+import formattedTitle from '../functions/formattedTitle'
 
 const StyledSection = styled.section`
     &:hover .card-overlay {
@@ -18,6 +19,13 @@ const StyledSection = styled.section`
 const StyledDiv = styled.div`
     padding-bottom: 150%;
     position: relative;
+`
+
+const StyledLink = styled.a`
+    cursor: pointer;
+    inset: 0;
+    position: absolute;
+    z-index: 1;
 `
 
 const spin = keyframes`
@@ -76,6 +84,7 @@ const StyledFavorite = styled.div`
     right: 10px;
     top: 10px;
     visibility: hidden;
+    z-index: 2;
 
     &.active svg{
         fill: #d00;
@@ -137,6 +146,7 @@ export default function Card({ movie }: { movie: MovieProps }) {
                             <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                         </StyledHeart>
                     </StyledFavorite>
+                    <StyledLink href={`/movie/${movie.id}/${formattedTitle(movie.title)}`}></StyledLink>
                 </StyledDiv>
                 <StyledFigcaption>
                     <StyledTitle>
