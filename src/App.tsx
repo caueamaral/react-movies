@@ -42,17 +42,20 @@ function App() {
   const [search, setSearch] = useState<string>('')
   const [movies, setMovies] = useState<MovieProps[]>([])
   const [favorites, setFavorites] = useState<MovieProps[]>([])
+  const [hydrated, setHydrated] = useState<boolean>(false)
 
   useEffect(() => {
-      if (! sessionStorage.getItem('favorites')) {
-        sessionStorage.setItem('favorites', JSON.stringify([]))
-      }
-
-      setFavorites(JSON.parse(sessionStorage.getItem('favorites') ?? '[]')) 
+      const storeFavorites = sessionStorage.getItem('favorites')
+      const parsedFavorites = JSON.parse(storeFavorites ?? '[]') as MovieProps[]
+      setFavorites(parsedFavorites)
+      setHydrated(true)
   }, [])
 
   useEffect(() => {
-    sessionStorage.setItem('favorites', JSON.stringify(favorites))
+
+    if (hydrated) {
+      sessionStorage.setItem('favorites', JSON.stringify(favorites))
+    }
   }, [favorites])
 
   const addToFavorites = (movie: MovieProps) => {
