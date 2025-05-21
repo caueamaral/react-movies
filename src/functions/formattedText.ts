@@ -1,10 +1,8 @@
-export default function formattedText(title: string) : string {
-    const slug = title
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
+export default function formattedText(text: string) : string {
+    const newText = text
+        .replace(/[\u0300-\u036f]/g, '')
         .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim()
+        .toLowerCase()
 
-    return slug
+    return newText || ''
 }

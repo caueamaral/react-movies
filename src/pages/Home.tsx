@@ -19,7 +19,7 @@ export default function Home() {
 
                 setSearch(capitalizedSearchTerm)
 
-                const response = await getMovieByText(searchTerm)
+                const response = await getMovieByText(encodeURIComponent(query))
                 setMovies(response.data.results)
             }
             else {
