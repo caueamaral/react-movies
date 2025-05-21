@@ -23,6 +23,11 @@ const StyledHeader = styled.header`
     }
 `
 
+const StyledLink = styled.a`
+    color: currentColor;
+    text-decoration: none;
+`
+
 const StyledSection = styled.section`
     align-items: center;
     display: flex;
@@ -40,7 +45,9 @@ const StyledSection = styled.section`
 export default function Header() {
     return (
         <StyledHeader>
-            <Logo />
+            <StyledLink href="/">
+                <Logo />
+            </StyledLink>
             <StyledSection>
                 <Search />
                 <Navigation />
