@@ -35,7 +35,7 @@ export default function Home() {
     return (
         <main>
             <MovieList />
-            <MoviePagination />
+            {! query && (<MoviePagination />)}
         </main>
     )
 }
