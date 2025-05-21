@@ -2,10 +2,11 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import getMovieById from '../services/getMovieById'
+import releaseYear from '../functions/releaseYear'
 
 const StyledSection = styled.section`
     display: flex;
-    gap: 20px;
+    gap: 30px;
 `
 
 const StyledImg = styled.img`
@@ -14,7 +15,15 @@ const StyledImg = styled.img`
 
 const StyledTitle = styled.h1`
     font-size: 30px;
+`
+
+const StyledTitleText = styled.span`
     font-weight: 400;
+`
+
+const StyledTitleYear = styled.span`
+    color: #aaa;
+    margin-left: 10px;
 `
 
 const StyledReleaseDate = styled.div`
@@ -22,9 +31,15 @@ const StyledReleaseDate = styled.div`
     margin-top: 10px;
 `
 
-const StyledDescription = styled.p`
-    line-height: 1.5em;
-    margin-top: 30px;
+const StyledOverview = styled.p`
+    line-height: 1.6em;
+    margin-top: 40px;
+`
+
+const StyledOverviewTitle = styled.p`
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 5px;
 `
 
 export default function MovieInfo() {
@@ -55,14 +70,20 @@ export default function MovieInfo() {
                         </figure>
                         <div>
                             <StyledTitle>
-                                {movie.title}
+                                <StyledTitleText>
+                                    {movie.title}
+                                </StyledTitleText>
+                                <StyledTitleYear>
+                                    ({releaseYear(movie.release_date)})
+                                </StyledTitleYear>
                             </StyledTitle>
                             <StyledReleaseDate>
                                 {movie.release_date}
                             </StyledReleaseDate>
-                            <StyledDescription>
+                            <StyledOverview>
+                                <StyledOverviewTitle>Overview</StyledOverviewTitle>
                                 {movie.overview}
-                            </StyledDescription>
+                            </StyledOverview>
                         </div>
                     </StyledSection>
                 </article>

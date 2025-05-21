@@ -3,6 +3,7 @@ import { FavoritesContext } from '../App'
 import styled, { keyframes } from 'styled-components'
 import type { MovieProps } from '../interfaces/MovieProps'
 import formattedTitle from '../functions/formattedTitle'
+import releaseYear from '../functions/releaseYear'
 
 const StyledSection = styled.section`
     &:hover .card-overlay {
@@ -118,12 +119,6 @@ export default function Card({ movie }: { movie: MovieProps }) {
         favorite ? removeFromFavorites(movie.id) : addToFavorites(movie)
     }
 
-    const getMovieReleaseYear = (release_date: string) => {
-        const year = release_date.split('-')[0] || ''
-
-        return year
-    }
-
     return (
         <StyledSection className="card">
             <figure>
@@ -153,7 +148,7 @@ export default function Card({ movie }: { movie: MovieProps }) {
                         {movie.title}
                     </StyledTitle>
                     <StyledReleaseYear>
-                        {getMovieReleaseYear(movie.release_date)}
+                        {releaseYear(movie.release_date)}
                     </StyledReleaseYear>
                 </StyledFigcaption>
             </figure>
