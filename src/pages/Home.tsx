@@ -15,7 +15,9 @@ export default function Home() {
         const fetchData = async () => {
             if (query) {
                 const searchTerm = query.replace(/-/g, ' ')
-                setSearch(searchTerm)
+                const capitalizedSearchTerm = searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1)
+
+                setSearch(capitalizedSearchTerm)
 
                 const response = await getMovieByText(searchTerm)
                 setMovies(response.data.results)
