@@ -10,6 +10,7 @@ const StyledSection = styled.section`
 `
 
 const StyledImg = styled.img`
+    border-radius: 5px;
     width: 400px;
 `
 
@@ -31,15 +32,19 @@ const StyledReleaseDate = styled.div`
     margin-top: 10px;
 `
 
-const StyledOverview = styled.p`
+const StyledTagline = styled.div`
+    color: #aaa;
+    margin-top: 40px;
+`
+
+const StyledOverview = styled.div`
     line-height: 1.6em;
     margin-top: 40px;
 `
 
-const StyledOverviewTitle = styled.p`
-    font-size: 1.1em;
+const StyledOverviewTitle = styled.h2`
+    font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 5px;
 `
 
 export default function MovieInfo() {
@@ -50,6 +55,7 @@ export default function MovieInfo() {
         const fetchMovie = async () => {
             try {
                 const data = await getMovieById(id)
+
                 setMovie(data)
             } catch(error) {
                 console.log('Failed to fetch movie: ', error)
@@ -80,10 +86,17 @@ export default function MovieInfo() {
                             <StyledReleaseDate>
                                 {movie.release_date}
                             </StyledReleaseDate>
-                            <StyledOverview>
-                                <StyledOverviewTitle>Overview</StyledOverviewTitle>
-                                {movie.overview}
-                            </StyledOverview>
+                            <StyledTagline>
+                                {movie.tagline && `"${movie.tagline}"`}
+                            </StyledTagline>
+                            {movie.overview && (
+                                <StyledOverview>
+                                    <StyledOverviewTitle>Overview</StyledOverviewTitle>
+                                    <p>
+                                        {movie.overview}
+                                    </p>
+                                </StyledOverview>
+                            )}
                         </div>
                     </StyledSection>
                 </article>
