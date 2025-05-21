@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { styled } from 'styled-components'
 import { MoviesContext } from '../App'
-import MoviesApi from '../services/MoviesApi'
+import getMovies from '../services/getMovies'
 
 const StyledPagination = styled.section`
     align-items: center;
@@ -42,7 +42,7 @@ export default function MoviePagination() {
 
         const fetchMovies = async () => {
             try {
-                const response = await MoviesApi(page)
+                const response = await getMovies(page)
 page
                 setMovies(response.data.results)
             } catch(error) {

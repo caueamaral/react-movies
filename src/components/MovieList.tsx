@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { MoviesContext } from '../App'
 import MovieCard from './MovieCard'
-import MoviesApi from '../services/MoviesApi'
+import getMovies from '../services/getMovies'
 import MovieNotFound from '../components/MovieNotFound'
 
 export default function Movies() {
@@ -11,7 +11,7 @@ export default function Movies() {
         const fetchMovies = async () => {
             try {
                 const pageNumber: number = 1
-                const response = await MoviesApi(pageNumber)
+                const response = await getMovies(pageNumber)
                 
                 setMovies(response.data.results)
             } catch(error) {

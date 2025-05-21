@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function MovieApi(query: string) {
+export default function getMovie(query: string) {
     const endpoint = `https://api.themoviedb.org/3/search/movie?query=${query}`
 
     const headers = {

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { SearchContext } from '../App'
 import { MoviesContext } from '../App'
-import MovieApi from '../services/MovieApi'
+import getMovieByText from '../services/getMovieByText'
 import styled from 'styled-components'
 
 const StyledForm = styled.form`
@@ -50,7 +50,7 @@ export default function Search() {
 
         const fetchMovie = async () => {
             try {
-                const response = await MovieApi(search)
+                const response = await getMovieByText(search)
                 setMovies(response.data.results)
             } catch(error) {
                 console.log('Failed to fetch movie: ', error)
