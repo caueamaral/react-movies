@@ -1,7 +1,7 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../App'
-import { MoviesContext } from '../App'
-import getMovieByText from '../services/getMovieByText'
+import formattedText from '../functions/formattedText'
 import styled from 'styled-components'
 
 const StyledForm = styled.form`
@@ -43,21 +43,17 @@ const StyledButton = styled.button`
 
 export default function Search() {
     const { search, setSearch } = useContext(SearchContext)
-    const { movies, setMovies } = useContext(MoviesContext)
+
+    const navigate = useNavigate()
 
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const fetchMovie = async () => {
-            try {
-                const response = await getMovieByText(search)
-                setMovies(response.data.results)
-            } catch(error) {
-                console.log('Failed to fetch movie: ', error)
-            }
-        }
+        const query = formattedText(search)
 
-        fetchMovie()
+        if (query) {
+            navigate(`/search/${query}`)
+        }
     }
 
     return (

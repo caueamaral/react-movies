@@ -99,6 +99,7 @@ function App() {
               <Header />
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/search/:query" element={<Home />} />
                   <Route path="/favorites" element={<Favorites />} />
                   <Route path="/movie/:id/:title" element={<Movie />} />
                   <Route path="*" element={<PageNotFound />} />

@@ -1,26 +1,10 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { MoviesContext } from '../App'
 import MovieCard from './MovieCard'
-import getMovies from '../services/getMovies'
 import MovieNotFound from '../components/MovieNotFound'
 
 export default function Movies() {
-    const { movies, setMovies } = useContext(MoviesContext)
-
-    useEffect(() => {
-        const fetchMovies = async () => {
-            try {
-                const pageNumber: number = 1
-                const response = await getMovies(pageNumber)
-                
-                setMovies(response.data.results)
-            } catch(error) {
-                console.error('Faile to fetch movies: ', error)
-            }
-        }
-
-        fetchMovies()
-    }, [])
+    const { movies } = useContext(MoviesContext)
 
     return (
         <article className="cards">
