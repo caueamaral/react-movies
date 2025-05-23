@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Logo from './Logo'
 import Search from './Search'
@@ -45,9 +46,11 @@ const StyledSection = styled.section`
 export default function Header() {
     return (
         <StyledHeader>
-            <StyledLink href="/">
-                <Logo />
-            </StyledLink>
+            <Link to="/">
+                <StyledLink>
+                    <Logo />
+                </StyledLink>
+            </Link>
             <StyledSection>
                 <Search />
                 <Navigation />

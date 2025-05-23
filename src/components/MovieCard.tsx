@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom' 
 import { FavoritesContext } from '../App'
 import styled, { keyframes } from 'styled-components'
 import type { MovieProps } from '../interfaces/MovieProps'
@@ -141,7 +142,9 @@ export default function Card({ movie }: { movie: MovieProps }) {
                             <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
                         </StyledHeart>
                     </StyledFavorite>
-                    <StyledLink href={`/movie/${movie.id}/${formattedText(movie.title)}`}></StyledLink>
+                    <Link to={`/movie/${movie.id}/${formattedText(movie.title)}`}>
+                        <StyledLink></StyledLink>
+                    </Link>
                 </StyledDiv>
                 <StyledFigcaption>
                     <StyledTitle>
