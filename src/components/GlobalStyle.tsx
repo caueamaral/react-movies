@@ -27,11 +27,11 @@ export const GlobalStyle = createGlobalStyle`
         margin-inline: auto;
         max-width: 1500px; 
 
-        @media (max-width:799px) {
+        @media (max-width:767px) {
             min-height: calc(100dvh - var(--headerHeightMobile) - (var(--mainPadding) * 2));
         }
 
-        @media (min-width:800px) {
+        @media (min-width:768px) {
             min-height: calc(100vh - var(--headerHeightDesktop) - (var(--mainPadding) * 2));
         }
     }

@@ -5,13 +5,25 @@ import getMovieById from '../services/getMovieById'
 import releaseYear from '../functions/releaseYear'
 
 const StyledSection = styled.section`
-    display: flex;
-    gap: 30px;
+    @media (min-width: 768px) {
+        display: flex;
+        gap: 30px;
+    }
 `
 
 const StyledImg = styled.img`
     border-radius: 5px;
-    width: 400px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        width: 400px;
+    }
+`
+
+const StyledInfo = styled.div`
+    @media (max-width: 767px) {
+        margin-top: 20px;
+    }
 `
 
 const StyledTitle = styled.h1`
@@ -74,7 +86,7 @@ export default function MovieInfo() {
                         <figure>
                             <StyledImg src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt={movie.title} />
                         </figure>
-                        <div>
+                        <StyledInfo>
                             <StyledTitle>
                                 <StyledTitleText>
                                     {movie.title}
@@ -97,7 +109,7 @@ export default function MovieInfo() {
                                     </p>
                                 </StyledOverview>
                             )}
-                        </div>
+                        </StyledInfo>
                     </StyledSection>
                 </article>
             )}
