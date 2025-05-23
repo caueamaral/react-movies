@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { FavoritesContext } from '../App'
 import MovieCard from './MovieCard'
 
 export default function Favorites() {
-    const { favorites, setFavorites } = useContext(FavoritesContext)
+    const { favorites } = useContext(FavoritesContext)
 
     return (
         <article className="cards">

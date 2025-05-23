@@ -48,7 +48,7 @@ const StyledOverviewTitle = styled.h2`
 `
 
 export default function MovieInfo() {
-    const { id, title } = useParams()
+    const { id } = useParams()
     const [movie, setMovie] = useState<any>(null)
 
     useEffect(() => {
