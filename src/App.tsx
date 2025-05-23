@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle } from './components/GlobalStyle'
 import type { MovieProps } from './interfaces/MovieProps'
 import Header from './components/Header'
@@ -94,7 +94,7 @@ function App() {
       <SearchContext.Provider value={ searchValues }>
         <MoviesContext.Provider value={ moviesValues }>
           <FavoritesContext.Provider value={ favoritesValues }>
-            <BrowserRouter>
+            <HashRouter>
               <GlobalStyle />
               <Header />
                 <Routes>
@@ -104,7 +104,7 @@ function App() {
                   <Route path="/movie/:id/:title" element={<Movie />} />
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
           </FavoritesContext.Provider>
         </MoviesContext.Provider>
       </SearchContext.Provider>
