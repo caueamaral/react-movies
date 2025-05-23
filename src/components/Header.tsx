@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
     }
 `
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
     color: currentColor;
     text-decoration: none;
 `
@@ -46,11 +46,9 @@ const StyledSection = styled.section`
 export default function Header() {
     return (
         <StyledHeader>
-            <Link to="/">
-                <StyledLink>
-                    <Logo />
-                </StyledLink>
-            </Link>
+            <StyledLink to="/">
+                <Logo />
+            </StyledLink>
             <StyledSection>
                 <Search />
                 <Navigation />
