@@ -4,19 +4,16 @@ import MovieCard from './MovieCard'
 import MovieNotFound from '../components/MovieNotFound'
 
 export default function Movies() {
-    const { movies } = useContext(MoviesContext)
+    const { movies, loading } = useContext(MoviesContext)
+
+    if (loading) return
+    if (! movies.length) return <MovieNotFound />
 
     return (
         <article className="cards">
-            {
-                movies.length ? (
-                    movies.map(movie => (
-                        <MovieCard key={movie.id} movie={movie} />
-                    ))
-                ) : (
-                    <MovieNotFound />
-                )
-            }
+            {movies.map(movie => (
+                <MovieCard key={movie.id} movie={movie} />
+            ))}
         </article>
     )
 }

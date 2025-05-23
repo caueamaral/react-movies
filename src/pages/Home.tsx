@@ -8,7 +8,7 @@ import MoviePagination from '../components/MoviePagination'
 
 export default function Home() {
     const { query } = useParams()
-    const { setMovies } = useContext(MoviesContext)
+    const { setMovies, setLoading } = useContext(MoviesContext)
     const { setSearch } = useContext(SearchContext)
 
     useEffect(() => {
@@ -21,11 +21,13 @@ export default function Home() {
 
                 const response = await getMovieByText(encodeURIComponent(query))
                 setMovies(response.data.results)
+                setLoading(false)
             }
             else {
                 const page = 1
                 const response = await getMovies(page)
                 setMovies(response.data.results)
+                setLoading(false)
             }
         }
 

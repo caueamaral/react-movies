@@ -19,10 +19,14 @@ export const SearchContext = createContext<{
 
 export const MoviesContext = createContext<{
   movies: MovieProps[];
-  setMovies: React.Dispatch<React.SetStateAction<MovieProps[]>>
+  setMovies: React.Dispatch<React.SetStateAction<MovieProps[]>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   movies: [],
-  setMovies: () => {}
+  setMovies: () => {},
+  loading: true,
+  setLoading: () => {}
 })
 
 export const FavoritesContext = createContext<{
@@ -42,6 +46,7 @@ export const FavoritesContext = createContext<{
 function App() {
   const [search, setSearch] = useState<string>('')
   const [movies, setMovies] = useState<MovieProps[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
   const [favorites, setFavorites] = useState<MovieProps[]>([])
   const [hydrated, setHydrated] = useState<boolean>(false)
 
@@ -78,7 +83,9 @@ function App() {
   
   const moviesValues = {
     movies,
-    setMovies
+    setMovies,
+    loading,
+    setLoading
   }
 
   const favoritesValues = {
