@@ -6,7 +6,22 @@ import type { MovieProps } from '../interfaces/MovieProps'
 import formattedText from '../functions/formattedText'
 import releaseYear from '../functions/releaseYear'
 
-const StyledSection = styled.section`
+const slideIn = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
+
+const StyledSection = styled.section<{ delay: number }>`
+    animation: ${slideIn} 0.5s ease-out forwards;
+    opacity: 0;
+    animation-delay: ${({ delay }) => delay}ms;
+
     &:hover .card-overlay {
         opacity: 1;
         visibility: visible;
@@ -109,7 +124,7 @@ const StyledReleaseYear = styled.div`
     margin-top: 5px;
 `
 
-export default function Card({ movie }: { movie: MovieProps }) {
+export default function Card({ movie, index }: { movie: MovieProps, index: number }) {
     if (! movie.poster_path) return
 
     const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext)
@@ -121,7 +136,7 @@ export default function Card({ movie }: { movie: MovieProps }) {
     }
 
     return (
-        <StyledSection className="card">
+        <StyledSection className="card" delay={index * 100}>
             <figure>
                 <StyledDiv>
                     <StyledSpinner xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" id="Layer_1" version="1.1" viewBox="0 0 128 128" xmlSpace="preserve">

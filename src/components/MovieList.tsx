@@ -11,8 +11,12 @@ export default function Movies() {
 
     return (
         <article className="cards">
-            {movies.map(movie => (
-                <MovieCard key={movie.id} movie={movie} />
+            {movies.map((movie, index) => (
+                <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    index={index}
+                />
             ))}
         </article>
     )

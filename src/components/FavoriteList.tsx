@@ -8,8 +8,12 @@ export default function Favorites() {
     return (
         <article className="cards">
             {
-                favorites.map(favorite => (
-                    <MovieCard key={favorite.id} movie={favorite} />
+                favorites.map((favorite, index) => (
+                    <MovieCard
+                        key={favorite.id}
+                        movie={favorite}
+                        index={index}
+                    />
                 ))
             }
         </article>
