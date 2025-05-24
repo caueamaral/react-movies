@@ -11,6 +11,7 @@ const StyledNavLink = styled(NavLink)`
     display: block;
     padding-block: 5px;
     text-decoration: none;
+    text-transform: uppercase;
 
     &.active {
         border-bottom: 1px solid;
