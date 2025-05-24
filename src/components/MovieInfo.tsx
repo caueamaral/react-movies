@@ -1,19 +1,9 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import { slideIn } from '../components/GlobalStyle'
+import styled from 'styled-components'
 import getMovieById from '../services/getMovieById'
 import releaseYear from '../functions/releaseYear'
-
-const slideIn = keyframes`
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-`
 
 const StyledSection = styled.section`
     animation: ${slideIn} 0.5s ease-out forwards;

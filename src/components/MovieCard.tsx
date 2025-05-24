@@ -1,21 +1,11 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom' 
 import { FavoritesContext } from '../App'
+import { slideIn } from '../components/GlobalStyle'
 import styled, { keyframes } from 'styled-components'
 import type { MovieProps } from '../interfaces/MovieProps'
 import formattedText from '../functions/formattedText'
 import releaseYear from '../functions/releaseYear'
-
-const slideIn = keyframes`
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-`
 
 const StyledSection = styled.section<{ delay: number }>`
     animation: ${slideIn} 0.5s ease-out forwards;

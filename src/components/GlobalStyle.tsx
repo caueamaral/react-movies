@@ -1,4 +1,15 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
+
+const slideIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -63,3 +74,5 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 `
+
+export { slideIn }
