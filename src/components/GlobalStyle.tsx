@@ -47,6 +47,24 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .not-found {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    @media (max-width:767px) {
+        .not-found {
+            min-height: calc(100dvh - var(--headerHeightMobile) - (var(--mainPadding) * 2));
+        }
+    }
+
+    @media (min-width:768px) {
+        .not-found {
+            min-height: calc(100vh - var(--headerHeightDesktop) - (var(--mainPadding) * 2));
+        }
+    }
+
     .cards {
         display: grid;
         gap: 20px;

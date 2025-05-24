@@ -104,6 +104,7 @@ function App() {
             <HashRouter>
               <GlobalStyle />
               <Header />
+              <main>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/search/:query" element={<Home />} />
@@ -111,6 +112,7 @@ function App() {
                   <Route path="/movie/:id/:title" element={<Movie />} />
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
+              </main>
             </HashRouter>
           </FavoritesContext.Provider>
         </MoviesContext.Provider>

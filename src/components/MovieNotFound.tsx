@@ -1,12 +1,6 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
 
-const StyledMain = styled.main`
-    align-items: center;
-    display: flex;
-    justify-content: center;
-`
-
 const StyledH1 = styled.h1`
     font-size: 26px;
 
@@ -27,12 +21,10 @@ export default function MovieNotFound() {
     }, [])
 
     return (
-        <>
-            <StyledMain>
-                <section>
-                    <StyledH1>No Movie Found :-(</StyledH1>
-                </section>
-            </StyledMain>
-        </>
+        <div className="not-found">
+            <section>
+                <StyledH1>No Movie Found :-(</StyledH1>
+            </section>
+        </div>
     )
 }

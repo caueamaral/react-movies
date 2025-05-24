@@ -34,8 +34,6 @@ export default function Favorites() {
     )
 
     return (
-        <main>
-            <FavoriteList />
-        </main>
+        <FavoriteList />
     )
 }
