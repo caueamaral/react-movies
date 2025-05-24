@@ -7,11 +7,11 @@ import formattedText from '../functions/formattedText'
 import releaseYear from '../functions/releaseYear'
 
 const slideIn = keyframes`
-    0% {
+    from {
         opacity: 0;
         transform: translateX(100px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateX(0);
     }
