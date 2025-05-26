@@ -23,6 +23,12 @@ export default function Home() {
                 setMovies(response.data.results)
                 setLoading(false)
             }
+            else if (page) {
+                const pageNumber = Number(page) || 1
+                const response = await getMovies(pageNumber)
+                setMovies(response.data.results)
+                setLoading(false)
+            }
             else {
                 const page = 1
                 const response = await getMovies(page)
@@ -32,17 +38,7 @@ export default function Home() {
         }
 
         fetchData()
-    }, [query])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const pageNumber = Number(page)
-            const response = await getMovies(pageNumber)
-            setMovies(response.data.results)
-            setLoading(false)
-        }
-        fetchData()
-    }, [page])
+    }, [query, page])
 
     return (
         <>        
