@@ -8,12 +8,14 @@ export default function getMovies(page: number) {
     }
 
     const params = {
-        include_adult: false,
+        page,
         include_video: false,
         language: 'en-US',
         without_genres: documentary,
-        page,
-        sort_by: 'popularity.desc'
+        sort_by: 'popularity.desc',
+        include_adult: false,
+        'certification_country': 'US',
+        'certification.lte': 'R',
     }
 
     const endpoint = `https://api.themoviedb.org/3/discover/movie`
