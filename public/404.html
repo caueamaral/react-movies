@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viweport" content="width=device-width, initial-scale=1.0" />
+        <title>Redirecting...</title>
+        <script>
+            ;(function() {
+                var currentUrl = window.location.href
+                var repoName = '/react-movies/'
+
+                if (currentUrl.includes(repoName)) {
+                    var path = window.location.pathname.replace(repoName, '')
+                    var newUrl = window.location.origin + repoName + '#' + path
+
+                    window.location.replace(newUrl)
+                }
+            })()
+        </script>
+    </head>
+    <body>
+        <h1>Redirecting...</h1>
+        <p>
+            If you are not redirected automatically, <a href="https://caueamaral.github.io/react-movies">click here</a>.
+        </p>
+    </body>
+</html>
