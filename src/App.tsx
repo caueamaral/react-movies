@@ -3,7 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle } from './components/GlobalStyle'
 import type { MovieProps } from './interfaces/MovieProps'
 import Header from './components/Header'
-import Home from './pages/Home'
+import Movies from './pages/Movies'
 import Favorites from './pages/Favorites'
 import Movie from './pages/Movie'
 import PageNotFound from './pages/PageNotFound'
@@ -53,7 +53,7 @@ export const FavoritesContext = createContext<{
 
 function App() {
   const [search, setSearch] = useState<string>('')
-  const [currentPage, setCurrentPage] = useState<string>('1')
+  const [currentPage, setCurrentPage] = useState<string>('1') 
   const [movies, setMovies] = useState<MovieProps[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [favorites, setFavorites] = useState<MovieProps[]>([])
@@ -121,9 +121,9 @@ function App() {
                 <Header />
                 <main>
                   <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/search/:query" element={<Home />} />
-                    <Route path="/page/:page" element={<Home />} />
+                    <Route path="/" element={<Movies />} />
+                    <Route path="/search/:query" element={<Movies />} />
+                    <Route path="/page/:page" element={<Movies />} />
                     <Route path="/favorites" element={<Favorites />} />
                     <Route path="/movie/:id/:title" element={<Movie />} />
                     <Route path="*" element={<PageNotFound />} />
