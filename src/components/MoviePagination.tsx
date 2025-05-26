@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { MoviesContext } from '../App'
-import getMovies from '../services/getMovies'
 
 const StyledPagination = styled.section`
     align-items: center;
@@ -30,8 +30,9 @@ const StyledButton = styled.button`
 `
 
 export default function MoviePagination() {
-    const { movies, setMovies } = useContext(MoviesContext)
+    const { movies } = useContext(MoviesContext)
     const [currentPage, setCurrentPage] = useState<number>(1)
+    const navigate = useNavigate()
 
     if (! movies.length) return
 
@@ -39,18 +40,7 @@ export default function MoviePagination() {
 
     const handleButtonClick = (page: number) => {
         setCurrentPage(page)
-
-        const fetchMovies = async () => {
-            try {
-                const response = await getMovies(page)
-page
-                setMovies(response.data.results)
-            } catch(error) {
-                console.error('Faile to fetch movies: ', error)
-            }
-        }
-
-        fetchMovies()
+        navigate(`/page/${page}`)
     }
 
     return (

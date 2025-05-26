@@ -7,7 +7,7 @@ import MovieList from '../components/MovieList'
 import MoviePagination from '../components/MoviePagination'
 
 export default function Home() {
-    const { query } = useParams()
+    const { query, page } = useParams()
     const { setMovies, setLoading } = useContext(MoviesContext)
     const { setSearch } = useContext(SearchContext)
 
@@ -33,6 +33,16 @@ export default function Home() {
 
         fetchData()
     }, [query])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const pageNumber = Number(page)
+            const response = await getMovies(pageNumber)
+            setMovies(response.data.results)
+            setLoading(false)
+        }
+        fetchData()
+    }, [page])
 
     return (
         <>        
