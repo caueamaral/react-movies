@@ -5,6 +5,7 @@ import getMovies from '../services/getMovies'
 import getMovieByText from '../services/getMovieByText'
 import MovieList from '../components/MovieList'
 import MoviePagination from '../components/MoviePagination'
+import PageNotFound from './PageNotFound'
 
 export default function Home() {
     const { query, page } = useParams()
@@ -25,24 +26,29 @@ export default function Home() {
                 setCurrentPage('1')
                 setLoading(false)
             }
-            else if (page) {
+            else {
                 const pageNumber = page || '1'
+                const validPage = Number(pageNumber)
+
+                if (validPage < 1 || validPage > 10 || isNaN(validPage)) {
+                    setMovies([])
+                    setLoading(false)
+                    return
+                }
+
                 const response = await getMovies(pageNumber)
                 setMovies(response.data.results)
-                setCurrentPage(page)
-                setLoading(false)
-            }
-            else {
-                const page = '1'
-                const response = await getMovies(page)
-                setMovies(response.data.results)
-                setCurrentPage(page)
+                setCurrentPage(pageNumber)
                 setLoading(false)
             }
         }
 
         fetchData()
     }, [query, page])
+
+    const validPage = page ? Number(page) >= 1 && Number(page) <= 10 : true
+
+    if (page && !validPage) return <PageNotFound />
 
     return (
         <>        
