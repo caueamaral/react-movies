@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { MoviesContext, SearchContext } from '../App'
+import { CurrentPageContext, MoviesContext, SearchContext } from '../App'
 import getMovies from '../services/getMovies'
 import getMovieByText from '../services/getMovieByText'
 import MovieList from '../components/MovieList'
@@ -8,6 +8,7 @@ import MoviePagination from '../components/MoviePagination'
 
 export default function Home() {
     const { query, page } = useParams()
+    const { setCurrentPage } = useContext(CurrentPageContext)
     const { setMovies, setLoading } = useContext(MoviesContext)
     const { setSearch } = useContext(SearchContext)
 
@@ -21,18 +22,21 @@ export default function Home() {
 
                 const response = await getMovieByText(encodeURIComponent(query))
                 setMovies(response.data.results)
+                setCurrentPage('1')
                 setLoading(false)
             }
             else if (page) {
-                const pageNumber = Number(page) || 1
+                const pageNumber = page || '1'
                 const response = await getMovies(pageNumber)
                 setMovies(response.data.results)
+                setCurrentPage(page)
                 setLoading(false)
             }
             else {
-                const page = 1
+                const page = '1'
                 const response = await getMovies(page)
                 setMovies(response.data.results)
+                setCurrentPage(page)
                 setLoading(false)
             }
         }

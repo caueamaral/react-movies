@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function getMovies(page: number) {
+export default function getMovies(page: string) {
     const documentary = 99
 
     const headers = {

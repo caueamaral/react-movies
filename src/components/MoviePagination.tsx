@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { styled } from 'styled-components'
-import { MoviesContext } from '../App'
+import { CurrentPageContext, MoviesContext } from '../App'
 
 const StyledPagination = styled.section`
     align-items: center;
@@ -30,17 +30,22 @@ const StyledButton = styled.button`
 `
 
 export default function MoviePagination() {
+    const { page } = useParams()
+    const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
     const { movies } = useContext(MoviesContext)
-    const [currentPage, setCurrentPage] = useState<number>(1)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setCurrentPage(page || '1')
+    }, [page])
 
     if (! movies.length) return
 
-    const pages: number[] = [1, 2, 3, 4, 5]
+    const pagesNumber: string[] = ['1', '2', '3', '4', '5']
 
-    const handleButtonClick = (page: number) => {
-        setCurrentPage(page)
-        navigate(`/page/${page}`)
+    const handleButtonClick = (pageNumber: string) => {
+        setCurrentPage(pageNumber)
+        navigate(`/page/${pageNumber}`)
     }
 
     return (
@@ -50,13 +55,13 @@ export default function MoviePagination() {
             </div>
             <StyledButtonsContainer>
                 {
-                    pages.map((page) => (
+                    pagesNumber.map((pageNumber) => (
                         <StyledButton
-                            key={page}
-                            className={currentPage === page ? 'active' : ''}
-                            onClick={() => handleButtonClick(page)}
+                            key={pageNumber}
+                            className={currentPage === pageNumber ? 'active' : ''}
+                            onClick={() => handleButtonClick(pageNumber)}
                         >
-                            {page}
+                            {pageNumber}
                         </StyledButton>
                     ))
                 }

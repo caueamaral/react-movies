@@ -17,6 +17,14 @@ export const SearchContext = createContext<{
     setSearch: () => {}
 })
 
+export const CurrentPageContext = createContext<{
+  currentPage: string;
+  setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+}>({
+  currentPage: '1',
+  setCurrentPage: () => {}
+})
+
 export const MoviesContext = createContext<{
   movies: MovieProps[];
   setMovies: React.Dispatch<React.SetStateAction<MovieProps[]>>;
@@ -45,6 +53,7 @@ export const FavoritesContext = createContext<{
 
 function App() {
   const [search, setSearch] = useState<string>('')
+  const [currentPage, setCurrentPage] = useState<string>('1')
   const [movies, setMovies] = useState<MovieProps[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [favorites, setFavorites] = useState<MovieProps[]>([])
@@ -80,6 +89,11 @@ function App() {
     search,
     setSearch
   }
+
+  const currentPageValues = {
+    currentPage,
+    setCurrentPage
+  }
   
   const moviesValues = {
     movies,
@@ -99,24 +113,26 @@ function App() {
   return (
     <>
       <SearchContext.Provider value={ searchValues }>
-        <MoviesContext.Provider value={ moviesValues }>
-          <FavoritesContext.Provider value={ favoritesValues }>
-            <HashRouter>
-              <GlobalStyle />
-              <Header />
-              <main>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/search/:query" element={<Home />} />
-                  <Route path="/page/:page" element={<Home />} />
-                  <Route path="/favorites" element={<Favorites />} />
-                  <Route path="/movie/:id/:title" element={<Movie />} />
-                  <Route path="*" element={<PageNotFound />} />
-                </Routes>
-              </main>
-            </HashRouter>
-          </FavoritesContext.Provider>
-        </MoviesContext.Provider>
+        <CurrentPageContext.Provider value={ currentPageValues }>
+          <MoviesContext.Provider value={ moviesValues }>
+            <FavoritesContext.Provider value={ favoritesValues }>
+              <HashRouter>
+                <GlobalStyle />
+                <Header />
+                <main>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/search/:query" element={<Home />} />
+                    <Route path="/page/:page" element={<Home />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="/movie/:id/:title" element={<Movie />} />
+                    <Route path="*" element={<PageNotFound />} />
+                  </Routes>
+                </main>
+              </HashRouter>
+            </FavoritesContext.Provider>
+          </MoviesContext.Provider>
+        </CurrentPageContext.Provider>
       </SearchContext.Provider>
     </>
   )
