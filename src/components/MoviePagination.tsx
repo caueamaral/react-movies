@@ -41,7 +41,7 @@ export default function MoviePagination() {
 
     if (! movies.length) return
 
-    const pagesNumber: string[] = ['1', '2', '3', '4', '5']
+    const pagesNumber = Array.from({ length: 5 }, (_, i) => String(i + 1))
 
     const handleButtonClick = (pageNumber: string) => {
         setCurrentPage(pageNumber)
