@@ -86,10 +86,6 @@ export const GlobalStyle = createGlobalStyle`
         .cards {
             grid-template-columns: repeat(6, 1fr);
         }
-
-        .card:nth-of-type(n+19) {
-            display: none;
-        }
     }
 `
 
