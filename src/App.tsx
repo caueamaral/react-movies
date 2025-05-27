@@ -25,7 +25,7 @@ export const MaxPaginationContext = createContext<{
   maxPagination: number;
   setMaxPagination: React.Dispatch<React.SetStateAction<number>>;
 }>({
-  maxPagination: 10,
+  maxPagination: 5,
   setMaxPagination: () => {}
 })
 
@@ -58,7 +58,7 @@ export const FavoritesContext = createContext<{
 function App() {
   const [ search, setSearch ] = useState<string>('')
   const [ currentPage, setCurrentPage ] = useState<string>('1')
-  const [ maxPagination, setMaxPagination ] = useState<number>(10)
+  const [ maxPagination, setMaxPagination ] = useState<number>(5)
   const [ movies, setMovies ] = useState<MovieProps[]>([])
   const [ loading, setLoading ] = useState<boolean>(true)
   const [ favorites, setFavorites ] = useState<MovieProps[]>([])

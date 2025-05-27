@@ -47,7 +47,7 @@ export default function Home() {
         fetchData()
     }, [query, page])
 
-    const validPage = page ? Number(page) >= 1 && Number(page) <= 10 : true
+    const validPage = page ? Number(page) >= 1 && Number(page) <= maxPagination : true
 
     if (page && !validPage) return <PageNotFound />
 
