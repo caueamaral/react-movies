@@ -9,7 +9,6 @@ List of Movie cards using [The Movie Database (TMDB)](https://www.themoviedb.org
 - axios
 - Context API
 - React Router
-- Material UI
 - useEffect()
 - useState()
 
