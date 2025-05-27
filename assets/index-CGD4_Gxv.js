@@ -328,7 +328,7 @@ Please change the parent <Route path="${L}"> to <Route path="${L==="/"?"*":`${L}
         color: #fff;
         pointer-events: none;
     }
-`;function ex(){const{page:a}=Oo(),{currentPage:i,setCurrentPage:c}=M.useContext(Xo),{maxPagination:s}=M.useContext(Qo),{movies:o}=M.useContext(zr),f=Ao();if(M.useEffect(()=>{c(a||"1")},[a]),!o.length)return;const h=Array.from({length:s},(y,m)=>String(m+1)),v=y=>{c(y),f(`/page/${y}`)};return X.jsxs(PE,{children:[X.jsx("div",{children:"Pagination"}),X.jsx(IE,{children:h.map(y=>X.jsx(tx,{className:i===y?"active":"",onClick:()=>v(y),children:y},y))})]})}const nx=ot.h1`
+`;function ex(){const{page:a}=Oo(),{currentPage:i,setCurrentPage:c}=M.useContext(Xo),{maxPagination:s}=M.useContext(Qo),{movies:o}=M.useContext(zr),f=Ao();if(M.useEffect(()=>{c(a||"1")},[a]),!o.length)return;const h=Array.from({length:s},(y,m)=>String(m+1)),v=y=>{c(y),f(`/page/${y}`)};return X.jsxs(PE,{className:"pagination",children:[X.jsx("div",{children:"Pagination"}),X.jsx(IE,{children:h.map(y=>X.jsx(tx,{className:i===y?"active":"",onClick:()=>v(y),children:y},y))})]})}const nx=ot.h1`
     font-size: 26px;
 
     @media (min-width:1024px) {
