@@ -50,7 +50,7 @@ export default function MoviePagination() {
     }
 
     return (
-        <StyledPagination>
+        <StyledPagination className="pagination">
             <div>
                 Pagination
             </div>
