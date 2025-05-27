@@ -21,6 +21,14 @@ export const CurrentPageContext = createContext<{
   setCurrentPage: () => {}
 })
 
+export const MaxPaginationContext = createContext<{
+  maxPagination: number;
+  setMaxPagination: React.Dispatch<React.SetStateAction<number>>;
+}>({
+  maxPagination: 10,
+  setMaxPagination: () => {}
+})
+
 export const MoviesContext = createContext<{
   movies: MovieProps[];
   setMovies: React.Dispatch<React.SetStateAction<MovieProps[]>>;
@@ -50,6 +58,7 @@ export const FavoritesContext = createContext<{
 function App() {
   const [ search, setSearch ] = useState<string>('')
   const [ currentPage, setCurrentPage ] = useState<string>('1')
+  const [ maxPagination, setMaxPagination ] = useState<number>(10)
   const [ movies, setMovies ] = useState<MovieProps[]>([])
   const [ loading, setLoading ] = useState<boolean>(true)
   const [ favorites, setFavorites ] = useState<MovieProps[]>([])
@@ -91,6 +100,11 @@ function App() {
     setCurrentPage
   }
   
+  const maxPaginationValues = {
+    maxPagination,
+    setMaxPagination
+  }
+
   const moviesValues = {
     movies,
     setMovies,
@@ -110,14 +124,16 @@ function App() {
     <>
       <SearchContext.Provider value={ searchValues }>
         <CurrentPageContext.Provider value={ currentPageValues }>
-          <MoviesContext.Provider value={ moviesValues }>
-            <FavoritesContext.Provider value={ favoritesValues }>
-              <HashRouter>
-                <GlobalStyle />
-                <RouterContent />
-              </HashRouter>
-            </FavoritesContext.Provider>
-          </MoviesContext.Provider>
+          <MaxPaginationContext.Provider value={ maxPaginationValues }>
+            <MoviesContext.Provider value={ moviesValues }>
+              <FavoritesContext.Provider value={ favoritesValues }>
+                <HashRouter>
+                  <GlobalStyle />
+                  <RouterContent />
+                </HashRouter>
+              </FavoritesContext.Provider>
+            </MoviesContext.Provider>
+          </MaxPaginationContext.Provider>
         </CurrentPageContext.Provider>
       </SearchContext.Provider>
     </>

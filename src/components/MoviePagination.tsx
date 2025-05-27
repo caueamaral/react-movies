@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { styled } from 'styled-components'
-import { CurrentPageContext, MoviesContext } from '../App'
+import { CurrentPageContext, MaxPaginationContext, MoviesContext } from '../App'
 
 const StyledPagination = styled.section`
     align-items: center;
@@ -32,6 +32,7 @@ const StyledButton = styled.button`
 export default function MoviePagination() {
     const { page } = useParams()
     const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
+    const { maxPagination } = useContext(MaxPaginationContext)
     const { movies } = useContext(MoviesContext)
     const navigate = useNavigate()
 
@@ -41,7 +42,7 @@ export default function MoviePagination() {
 
     if (! movies.length) return
 
-    const pagesNumber = Array.from({ length: 5 }, (_, i) => String(i + 1))
+    const pagesNumber = Array.from({ length: maxPagination }, (_, i) => String(i + 1))
 
     const handleButtonClick = (pageNumber: string) => {
         setCurrentPage(pageNumber)

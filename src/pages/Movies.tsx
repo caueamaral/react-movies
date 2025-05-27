@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { CurrentPageContext, MoviesContext, SearchContext } from '../App'
+import { CurrentPageContext, MaxPaginationContext, MoviesContext, SearchContext } from '../App'
 import getMovies from '../services/getMovies'
 import getMovieByText from '../services/getMovieByText'
 import MovieList from '../components/MovieList'
@@ -10,6 +10,7 @@ import PageNotFound from './PageNotFound'
 export default function Home() {
     const { query, page } = useParams()
     const { setCurrentPage } = useContext(CurrentPageContext)
+    const { maxPagination } = useContext(MaxPaginationContext)
     const { setMovies, setLoading } = useContext(MoviesContext)
     const { setSearch } = useContext(SearchContext)
 
@@ -30,7 +31,7 @@ export default function Home() {
                 const pageNumber = page || '1'
                 const validPage = Number(pageNumber)
 
-                if (validPage < 1 || validPage > 10 || isNaN(validPage)) {
+                if (validPage < 1 || validPage > maxPagination || isNaN(validPage)) {
                     setMovies([])
                     setLoading(false)
                     return
