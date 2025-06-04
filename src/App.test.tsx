@@ -4,6 +4,10 @@ import App from './App';
 import Navigation from './components/Navigation'
 
 describe('renders the components', () => {
+  test('deliberately break test tro verify CI failure', () => {
+    expect(true).toBe(false)
+  })
+
   test('renders logo', () => {
     render(<App />)
     expect(screen.getByText(/movies/i)).toBeInTheDocument()
