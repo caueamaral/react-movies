@@ -1,5 +1,5 @@
 import formattedText from './formattedText'
 
-test('when passes Lilo & Stitch returns lilo-&-stitch', () => {
+test('extracts "lilo-&-stitch" from "Lilo & Stitch"', () => {
     expect(formattedText('Lilo & Stitch')).toEqual('lilo-&-stitch')
 })
