@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "dev-and-test": "concurrently \"npm run dev\" \"npm test\"",
-    "test": "vitest",
+    "test": "vitest --watch",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
